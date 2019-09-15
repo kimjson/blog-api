@@ -1,0 +1,15 @@
+# Visual Studio Code
+*.code-workspace
+# package directories
+node_modules
+jspm_packages
+
+# Serverless
+.serverless
+serverless.env.yml
+
+# Webpack directories
+.webpack
+
+# TypeORM
+ormconfig.js

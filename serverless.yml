@@ -1,0 +1,36 @@
+service:
+  name: blog-api
+
+plugins:
+  - serverless-webpack
+  - serverless-domain-manager
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  profile: overscoreServerless
+  region: ap-northeast-2
+  stage: ${opt:stage, 'dev'}
+
+functions:
+  graphql:
+    handler: src/handler.handler
+    events:
+    - http:
+        path: graphql
+        method: post
+        cors: true
+    - http:
+        path: graphql
+        method: get
+        cors: true
+
+custom:
+  env: ${file(./serverless.env.yml):${self:provider.stage}}
+  customDomain:
+    domainName: ${self:custom.env.CUSTOM_DOMAIN_NAME}
+    certificateArn: ${self:custom.env.CERTIFICATE_ARN}
+    basePath: blog
+    stage: ${self:provider.stage}
+    endpointType: 'regional'
+    createRoute53Record: true
