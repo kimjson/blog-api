@@ -13,7 +13,7 @@
     "remove:production": "sls remove -v -s production"
   },
   "dependencies": {
-    "apollo-server-lambda": "^2.9.3",
+    "apollo-server-lambda": "^2.14.2",
     "date-fns": "^2.2.1",
     "github-slugger": "^1.2.1",
     "graphql": "^14.5.4",
